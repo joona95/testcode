@@ -10,18 +10,23 @@ public class CalculationRequest {
         if(parts.length != 3) {
             throw new BadRequestException();
         }
-        if(parts[1].length() != 1) {
+        String operator = parts[1];
+        if(operator.length() != 1) {
             throw new InvalidOperatorException();
         }
-        if(!parts[1].equals("+") &&
-                !parts[1].equals("-") &&
-                !parts[1].equals("*") &&
-                !parts[1].equals("/")) {
+        if(isaInvalidOperator(operator)) {
             throw new InvalidOperatorException();
         }
         this.num1 = Long.parseLong(parts[0]);
         this.num2 = Long.parseLong(parts[2]);
-        this.operator = parts[1];
+        this.operator = operator;
+    }
+
+    private boolean isaInvalidOperator(String operator) {
+        return !operator.equals("+") &&
+                !operator.equals("-") &&
+                !operator.equals("*") &&
+                !operator.equals("/");
     }
 
     public long getNum1() {
