@@ -7,6 +7,18 @@ public class CalculationRequest {
     private final String operator;
 
     public CalculationRequest(String[] parts) {
+        if(parts.length != 3) {
+            throw new BadRequestException();
+        }
+        if(parts[1].length() != 1) {
+            throw new InvalidOperatorException();
+        }
+        if(!parts[1].equals("+") &&
+                !parts[1].equals("-") &&
+                !parts[1].equals("*") &&
+                !parts[1].equals("/")) {
+            throw new InvalidOperatorException();
+        }
         this.num1 = Long.parseLong(parts[0]);
         this.num2 = Long.parseLong(parts[2]);
         this.operator = parts[1];
