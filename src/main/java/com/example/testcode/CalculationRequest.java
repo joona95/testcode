@@ -14,7 +14,7 @@ public class CalculationRequest {
         if(operator.length() != 1) {
             throw new InvalidOperatorException();
         }
-        if(isaInvalidOperator(operator)) {
+        if(isInvalidOperator(operator)) {
             throw new InvalidOperatorException();
         }
         this.num1 = Long.parseLong(parts[0]);
@@ -22,7 +22,7 @@ public class CalculationRequest {
         this.operator = operator;
     }
 
-    private boolean isaInvalidOperator(String operator) {
+    private boolean isInvalidOperator(String operator) {
         return !operator.equals("+") &&
                 !operator.equals("-") &&
                 !operator.equals("*") &&
