@@ -2,9 +2,9 @@ package com.example.testcode;
 
 public class CalculationRequest {
 
-    private long num1;
-    private long num2;
-    private String operator;
+    private final long num1;
+    private final long num2;
+    private final String operator;
 
     public CalculationRequest(String[] parts) {
         this.num1 = Long.parseLong(parts[0]);
